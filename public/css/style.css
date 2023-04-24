@@ -370,3 +370,25 @@ img {
     width: 20%;
 
 }
+.imagencaja1 {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top:10px;
+}
+.listanews {
+    position: relative;
+    top:30px;
+    list-style: none;
+}
+.boton1boot {
+    border-style: double;
+    border-radius: 5px;
+    position: relative;
+    left: 60px;
+    bottom: 20px;  
+}
+#imagenpubli {
+    border: solid;
+    border-radius: 20px;
+}
