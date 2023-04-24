@@ -14,8 +14,8 @@ const port = 4000;
 // Configuración de la base de datos
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'ochgg',
-  password: '123456',
+  user: 'andrea',
+  password: '12345',
   database: 'redrocket'
 });
 
