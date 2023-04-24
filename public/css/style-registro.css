@@ -1,0 +1,200 @@
+body {
+    background-color: #D9E6E8;
+    font-family: lin Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #55868C;
+    z-index: 999;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 20px;
+    background-color: #55868C;
+}
+
+.logo img {
+    display: flex;
+    max-height: 70px;
+    max-width: 70%;
+    border: solid;
+    border-radius: 20px;
+    border-color: white;
+}
+
+.img-header {
+    display: flex;
+    max-height: 50px;
+    max-width: 100%;
+}
+
+.buttons img {
+    max-height: 20px;
+    margin: 5px;
+}
+
+.menu-btn {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 45%;
+}
+
+input[type="text"] {
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+button[type="submit"] {
+    border-radius: 10px;
+    margin: 5px;
+}
+
+h1 {
+    margin: 0 20px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    width: auto;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.img-fluid {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-redrocket {
+    display: flex;
+    height: 100px;
+    width: 100%;
+}
+
+.col-lg-4 {
+    margin-top: 200px;
+}
+
+.col-lg-8 {
+    margin-top: 50px;
+}
+
+.saludo {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 28px;
+    width: auto;
+    text-align: justify;
+}
+
+.small {
+    margin-top: 5%;
+    font-size: 11px;
+    color: #777;
+    text-align: justify;
+}
+
+.footer{
+    background-color:  #55868C;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        display: flex;
+        margin-top: 3px;
+
+    }
+
+    .buttons {
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .buttons img {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .buttons ul {
+        display: none;
+    }
+
+    .buttons ul.open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons ul.open li {
+        margin: 10px 0;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .img-fluid {
+        display: none;
+
+    }
+
+    .img-header {
+        display: none;
+    }
+
+    .img-redrocket {
+        display: none;
+    }
+
+    .saludo {
+        display: none;
+    }
+
+    .col-lg-4 {
+        margin-top: 0px;
+    }
+
+    .col-lg-8 {
+        margin-top: 20px;
+    }
+}

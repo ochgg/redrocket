@@ -1,0 +1,41 @@
+.chat-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+  }
+  
+  .chatbox {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 300px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 10%;
+  }
+  
+  .open-chat-btn {
+    position: relative;
+    z-index: 1001;
+    margin-left: 1800px;
+    margin-bottom: 20px;
+  }
+
+  /* Margen entre area de texto y boton enviar */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+
+  
+  @media screen and (max-width: 768px) {
+    .chatbox {
+      width: 100%;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  
+  

@@ -1,0 +1,38 @@
+.cabecera {
+    width: 90%;
+    height: 100px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row wrap;
+    position: sticky;
+    justify-content: space-between;
+    align-content: center;
+}
+.imagencaja1 {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    
+}
+.logo {
+    width: 70px;
+    height: 70px;
+    border: solid;
+    border-radius: 20px;
+    border-color: white; 
+}
+.cajanotificaciones {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.buscador {
+    height: 20px;
+    position: relative;
+    left: 10px;
+}
+.cajabuscador {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

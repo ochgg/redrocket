@@ -1,0 +1,13 @@
+# Ignore package files
+node_modules
+package-lock.json
+package.json
+
+# Ignore VS Code Settings
+.vscode/
+
+# Ignora todos los archivos de texto
+*.txt
+
+# Ignora los archivos relacionados a API keys
+.env
