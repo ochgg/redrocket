@@ -1,25 +1,24 @@
-const loginForm = document.querySelector('#login');
-loginForm.addEventListener('submit', login);
+// const form = document.getElementById ('formulario');
 
-async function login(event) {
-  event.preventDefault();
 
-  const email = document.querySelector('#email').value;
-  const password = document.querySelector('#password').value;
+// const enviarFormulario = (event) => {
+//     event.preventDefault ();
+//     console.log (
+//     event.target.email.value, 
+//     event.target.password.value,
+//    );
+    
+// }
+// form.addEventListener('submit', enviarFormulario);
 
-  const response = await fetch('/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email, password })
-  });
+const formulario = document.querySelector('#formulario');
 
-  const data = await response.json();
+formulario.addEventListener('submit', (event) => {
+  event.preventDefault(); // Evita que se envíe el formulario
 
-  if (response.ok) {
-    window.location.href = '/public/home.html';
-  } else {
-    document.querySelector('#error-message').textContent = data.message;
-  }
-}
+  const correo = document.querySelector('#correo').value;
+  const contrasena = document.querySelector('#contrasena').value;
+
+  // Realizar la lógica para enviar los datos del formulario al servidor
+});
+

@@ -40,7 +40,7 @@ form.addEventListener('submit', function(event) {
     }
   })
   .then(function(data) {
-    mensaje.textContent = `Se ha registrado el usuario exitosamente.`;
+    mensaje.textContent = `Se han registrado los datos: ${data.nombre}, ${data.email}, ${data.password}, ${data.ciudad}, ${data.pais}, ${data.edad}, ${data.estudios}, ${data.idiomas}, ${data.linkedin}, ${data.hobbies}`;
     nombreInput.value = '';
     emailInput.value = '';
     passwordInput.value = '';
@@ -54,7 +54,7 @@ form.addEventListener('submit', function(event) {
   })
   .catch(function(error) {
     console.log(error);
-    mensaje.textContent = 'Ha ocurrido un error al registrar los datos.';
+    mensaje.textContent = 'Ha ocurrido un error al registrar los datos, Usuario ya existe';
   });
 });
 
