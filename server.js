@@ -2,7 +2,7 @@
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const path = require('path');
 const Busboy = require('busboy');
 const fs = require('fs');
@@ -14,8 +14,8 @@ const port = 4000;
 // Configuración de la base de datos
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'andrea',
-  password: '12345',
+  user: 'admin',
+  password: '123456',
   database: 'redrocket'
 });
 
@@ -77,6 +77,21 @@ app.post('/api/registrar', function(req, res) {
   const hobbies = req.body.hobbies;
 
   const sql = `INSERT INTO registro_usuarios (nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies) VALUES ('${nombre}', '${email}', '${password}', '${ciudad}', '${pais}', '${edad}', '${estudios}', '${idiomas}', '${linkedin}', '${hobbies}')`;
+//ESTO ES LO DEL POST
+  app.post('/api/post', function(req, res) {
+    const title = req.body.title;
+    const content = req.body.content;
+    const sql = `INSERT INTO posts (title, content) VALUES ('${title}', '${content}')`;
+    db.query(sql, function(err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error al guardar los datos en la base de datos');
+      } else {
+        console.log('Post guardado correctamente en la base de datos');
+        res.json({ title, content });
+      }
+    });
+  });
 
   // Capturar error de correo existente
   db.query(sql, function(err, result) {

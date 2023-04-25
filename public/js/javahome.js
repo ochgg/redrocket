@@ -150,21 +150,17 @@ function darLike2() {
             setInterval(actualizarReloj, 1000);
           }
 
-/*const form = document.querySelector('#post-form');
+const form = document.querySelector('#post-form');
 const container = document.querySelector('#post-container');
 
-/*form.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
   const title = document.querySelector('#post-title').value;
   const content = document.querySelector('#post-content').value;
   // Aquí debes implementar la lógica para enviar los datos a tu servidor
   // y guardar la nueva publicación en la base de datos de tu red social.
+  //Aqui va el Fetch al servidor
   
-
-
-
-
-
   
   // Crear un nuevo div para la publicación
   const newPost = document.createElement('div');
@@ -184,46 +180,4 @@ const container = document.querySelector('#post-container');
 
   document.querySelector('#post-content').value='';
   document.querySelector('#title-content').value='';
-});*/
-const form = document.querySelector('#post-form');
-const container = document.querySelector('#post-container');
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const title = document.querySelector('#post-title').value;
-  const content = document.querySelector('#post-content').value;
-
-  // Enviar los datos del formulario al servidor
-  fetch('/crear-publicacion', {
-    method: 'POST',
-    body: JSON.stringify({ title, content }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Crear un nuevo div para la publicación
-    const newPost = document.createElement('div');
-    newPost.classList.add('post');
-
-    // Agregar el título y el contenido de la publicación al nuevo div
-    const postTitle = document.createElement('h2');
-    postTitle.innerText = data.title;
-    newPost.appendChild(postTitle);
-
-    const postContent = document.createElement('p');
-    postContent.innerText = data.content;
-    newPost.appendChild(postContent);
-
-    // Agregar el nuevo div a la página
-    container.appendChild(newPost);
-
-    // Limpiar los campos del formulario
-    document.querySelector('#post-title').value = '';
-    document.querySelector('#post-content').value = '';
-  })
-  .catch(error => console.error(error));
 });
-
-     
