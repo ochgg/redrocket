@@ -63,7 +63,7 @@ app.get('/public/img/:imagen', function(req, res) {
 app.post('/api/publicar', function(req, res) {
   const title = req.body.title;
   const content = req.body.content;
-  const sql = `INSERT INTO publicacion (id_usuario, title, content) VALUES (98, '${title}', '${content}')`;
+  const sql = `INSERT INTO publicacion (id_usuario, title, content) VALUES (1, '${title}', '${content}')`;
   db.query(sql, function(err, result) {
     if (err) {
       console.log(err);
