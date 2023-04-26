@@ -150,34 +150,44 @@ function darLike2() {
             setInterval(actualizarReloj, 1000);
           }
 
-const form = document.querySelector('#post-form');
-const container = document.querySelector('#post-container');
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const title = document.querySelector('#post-title').value;
-  const content = document.querySelector('#post-content').value;
-  // Aquí debes implementar la lógica para enviar los datos a tu servidor
-  // y guardar la nueva publicación en la base de datos de tu red social.
-  //Aqui va el Fetch al servidor
+          const form = document.querySelector('#post-form');
+          const container = document.querySelector('#post-container');
   
-  
-  // Crear un nuevo div para la publicación
-  const newPost = document.createElement('div');
-  newPost.classList.add('post');
-  
-  // Agregar el título y el contenido de la publicación al nuevo div
-  const postTitle = document.createElement('h2');
-  postTitle.innerText = title;
-  newPost.appendChild(postTitle);
-  
-  const postContent = document.createElement('p');
-  postContent.innerText = content;
-  newPost.appendChild(postContent);
-  
-  // Agregar el nuevo div a la página
-  container.appendChild(newPost);
-
-  document.querySelector('#post-content').value='';
-  document.querySelector('#title-content').value='';
-});
+            form.addEventListener('submit', async (event) => {
+              event.preventDefault();
+              const title = document.querySelector('#post-title').value;
+              const content = document.querySelector('#post-content').value;
+            
+              try {
+                const response = await fetch('/api/publicar', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ title, content })
+                });
+            
+                const data = await response.json();
+            
+                // Crear un nuevo div para la publicación
+                const newPost = document.createElement('div');
+                newPost.classList.add('post');
+            
+                // Agregar el título y el contenido de la publicación al nuevo div
+                const postTitle = document.createElement('h2');
+                postTitle.innerText = data.title;
+                newPost.appendChild(postTitle);
+            
+                const postContent = document.createElement('p');
+                postContent.innerText = data.content;
+                newPost.appendChild(postContent);
+            
+                // Agregar el nuevo div a la página
+                container.appendChild(newPost);
+            
+                document.querySelector('#post-content').value = '';
+                document.querySelector('#post-title').value = '';
+              } catch (error) {
+                console.error('Error:', error);
+              }
+            });

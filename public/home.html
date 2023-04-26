@@ -178,17 +178,21 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="">
+                                <!-- <div class=""> -->
+                                    <!-- se agrega la accione de registrar -->
+                                    <form action="/api/registrar" method="POST" enctype="multipart/form-data"></form>
                                      <form id="post-form">
                                     <div class="form-group">
-                                        <label for="post-title"></label><br>
+                                        <label for="post-title"></label>
                                         <input type="text" id="post-title" name="title" placeholder="Pon un título">
-                                        <label for="post-content"></label>
+                                        <!-- <label for="post-content"></label> -->
                                         <label for="post-content"></label>
                                         <textarea class="form-control"name= "content" id="post-content" placeholder="¿Qué estás pensando?"  rows="10"></textarea>
                                     </div>
-                    
-                                    <form class="btn enviar" action=""><input type="submit" value="Enviar"></form>
+                    <!-- //////////////// -->
+                                    <button type="submit" class="btn-primary enviar">Enviar</button> 
+                                    <!-- <input type="submit" value="Enviar"></form> -->
+                                    <!-- /////////// -->
                                     </form>
                                     
                                 </div>
@@ -280,7 +284,7 @@
             </div>
             <!-- middle wrapper end -->
             <!-- right wrapper start -->
-            <div class="d-none d-xl-block col-xl-3 right-wrapper">
+            <div id="mover" class="d-none d-xl-block col-xl-3 right-wrapper">
                 <div class="row">
                     <div class="col-md-12 grid-margin">
                         <div class="card rounded">

@@ -1,12 +1,8 @@
-// require('dontenv').config();
-const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const path = require('path');
-const Busboy = require('busboy');
-const fs = require('fs');
-const os = require('os');
+
 
 const app = express();
 const port = 4000;
@@ -64,6 +60,21 @@ app.get('/public/img/:imagen', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'img', req.params.imagen));
 });
 
+app.post('/api/publicar', function(req, res) {
+  const title = req.body.title;
+  const content = req.body.content;
+  const sql = `INSERT INTO publicacion (id_usuario, title, content) VALUES (98, '${title}', '${content}')`;
+  db.query(sql, function(err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error al guardar los datos en la base de datos');
+    } else {
+      console.log('Post guardado correctamente en la base de datos');
+      res.json({ title, content });
+    }
+  });
+});
+
 app.post('/api/registrar', function(req, res) {
   const nombre = req.body.nombre;
   const email = req.body.email;
@@ -77,21 +88,31 @@ app.post('/api/registrar', function(req, res) {
   const hobbies = req.body.hobbies;
 
   const sql = `INSERT INTO registro_usuarios (nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies) VALUES ('${nombre}', '${email}', '${password}', '${ciudad}', '${pais}', '${edad}', '${estudios}', '${idiomas}', '${linkedin}', '${hobbies}')`;
-//ESTO ES LO DEL POST
-  app.post('/api/post', function(req, res) {
-    const title = req.body.title;
-    const content = req.body.content;
-    const sql = `INSERT INTO posts (title, content) VALUES ('${title}', '${content}')`;
-    db.query(sql, function(err, result) {
-      if (err) {
-        console.log(err);
-        res.status(500).send('Error al guardar los datos en la base de datos');
+// });
+//////////////////////
+
+// manejar solicitudes POST a la ruta '/api/login'
+app.post('/api/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+//   // consultar la tabla de registro_usuarios en la base de datos
+  db.query('SELECT * FROM registro_usuarios WHERE email = ? AND password = ?', [email, password], (err, results) => {
+    if (err) {
+      console.error('Error al consultar la base de datos:', err);
+      res.sendStatus(500);
+    } else {
+      if (results.length > 0) {
+        res.send({ message: 'Inicio de sesión exitoso' });
       } else {
-        console.log('Post guardado correctamente en la base de datos');
-        res.json({ title, content });
+        res.send({ message: 'Nombre de usuario o contraseña incorrectos' });
       }
-    });
+    }
   });
+});
+
+
+/////////////////////////
 
   // Capturar error de correo existente
   db.query(sql, function(err, result) {
@@ -99,8 +120,10 @@ app.post('/api/registrar', function(req, res) {
       console.log(err);
       if (err.code === 'ER_DUP_ENTRY') {
         res.status(409).send('El usuario ya existe en la base de datos.');
+        console.log('El usuario ya existe en la base de datos.');
       } else {
         res.status(500).send('Error al guardar los datos en la base de datos');
+        console.log('Error al guardar los datos en la base de datos');
       }
     } else {
       console.log('Datos guardados correctamente en la base de datos');
@@ -115,6 +138,7 @@ app.post('/api/registrar', function(req, res) {
 app.listen(port, function() {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });
+
 
 
 
