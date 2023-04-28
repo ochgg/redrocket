@@ -1,13 +1,116 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/styleperf.css">
     <title>Perfil</title>
 </head>
 <body>
-    <h1>Esta en la pagina del Perfil. Pagina en construccion</h1>
+    <body>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="./img/logo.png" alt="Logo">
+                </div>
     
+                <div>
+                    <img src="./img/RedRocket.png" class="img-header" alt="RedRocket">
+                </div>
+    
+                <div class="search-box">
+                    <label for="Buscador"></label>
+                    <input type="text" placeholder="Buscar...">
+                    <button type="submit">&#128269;</button>
+                </div>
+    
+                <div class="buttons">
+                    <img src="./img/notificaciones.png" alt="Notificaciones">
+                    <img src="./img/mensajes.png" alt="Mensajes">
+                    <img src="./img/astronautacolor.png" alt="Mi Perfil">
+                    <img src="./img/favoritos.png" alt="Favoritos">
+                    <img src="./img/+amigos.png" alt="Agregar amigos">
+                </div>
+    
+                <div class="dropdown">
+                    <button class="menu-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">&#9776;
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Notificaciones</a></li>
+                            <li><a class="dropdown-item" href="#">Mensajes</a></li>
+                            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Favoritos</a></li>
+                            <li><a class="dropdown-item" href="#">Agregar amigos</a></li>
+                        </ul>
+                    </button>
+                </div>
+            </div>
+        </nav>
+       
+      
+        <div class="reloj" id="reloj"></div>
+
+    <main class="container principal">
+        <div class="row">
+            <section class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
+                
+                
+                 <div class="cajas caja1">
+                     <ul>
+                        <li> <img class="notificaciones" src="img/noticias.png" alt=""><button class="boton1boot">Noticias</button></li>
+                        <li> <img class="notificaciones" src="img/grupos.png" alt=""><button class="boton1boot">Grupos</button></li>
+                        <li> <img class="notificaciones" src="img/eventos.png" alt=""><button class="boton1boot">Eventos</button></li>
+                        <li> <img class="notificaciones" src="img/explorar.png" alt=""><button class="boton1boot">Explorar</button></li>                            
+                     </ul>
+
+                </div>
+                <div class="cajas cuenta">
+                    <ul>
+                        <li> <img class="notificaciones" src="img/ajustes.png" alt=""> <button class="boton1boot">Ajustes</button></li>
+                        <li> <img class="notificaciones" src="img/perfil.png" alt=""> <button class="boton1boot">Cuenta</button></li>
+                        <li> <img class="notificaciones" src="img/chat.png" alt=""><button class="boton1boot">Chat</button></li>
+                    </ul>
+                    
+                </div>
+            </section>
+            <section class="col-md-8 col-xl-6 middle-wrapper">
+                <div class="cajas perfil">
+                    <img class="imagen1" src="img/añadiramigo.jpg" alt="imagen1">
+                    <p><img class="notificaciones" src="img/usuario.png" alt="Nombre">Rafael Antonio Serrano</p>
+                    <p><img class="notificaciones Calendar" src="img/calendario.png" alt="Calendario">14/05/1988</p>
+                    <p><img class="notificaciones" src="img/email.png" alt="Calendario">rantserra@gmail.com</p>
+                    <p><img class="notificaciones" src="img/certificado.png" alt="Certi"> Full Stack Developer</p>
+                    <p><img class="notificaciones" src="img/marcador-de-posicion.png" alt=""> Gijón, Principado de Asturias, España</p>  
+                    <input class="boton1boot bton" type="button" id="bton2" value="Edita tu perfil"></a>
+                    <input class="boton1boot bton" type="button" id="bton" value="Elimina tu cuenta"></a>
+                </div>
+            </section>                         
+            <section class="d-none d-xl-block col-xl-3 right-wrapper">
+                <div class="cajas cajaamigos">
+                    <ul>
+                        <li> </li><img class="notificaciones" src="img/amigo.png" alt=""> <span class="nombreboot">Javier Blanco</span><button class="boton2">Aceptar</button> <button class="boton3">Rechazar</button>
+                        <li> </li><img class="notificaciones" src="img/amigo.png" alt=""> <span class="nombreboot">Juliana Blasco</span><button class="boton2">Aceptar</button> <button class="boton3">Rechazar</button>
+                        <li> </li><img class="notificaciones" src="img/amigo.png" alt=""> <span class="nombreboot">Alberto Suárez</span><button class="boton2">Aceptar</button> <button class="boton3">Rechazar</button>  
+                    </ul>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+    <div class="chatbox">
+        <form class="chat" action="">¿Necesitas ayuda?
+            <div><textarea name="chat" id="chat" cols="20" rows="5" placeholder="Queremos ayudarte"></textarea></div>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+  
 </body>
+<script src="./js/perfil.js"></script>
+
 </html>
