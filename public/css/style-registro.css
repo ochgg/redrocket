@@ -61,7 +61,7 @@ nav {
 .search-box {
     display: flex;
     align-items: center;
-    width: 45%;
+    width: 40%;
 }
 
 input[type="text"] {
