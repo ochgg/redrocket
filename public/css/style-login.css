@@ -10,3 +10,70 @@ body {
     background-color: #55868C;
 
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container .cohete {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: auto;
+  }
+
+
+  /* Estilos para pantallas pequeñas */
+@media only screen and (max-width: 767px) {
+    /* Cambiar el tamaño del cohete en pantallas pequeñas */
+    .cohete {
+      width: 400px;
+      height: 400px;
+    }
+  
+    /* Cambiar el tamaño del texto en pantallas pequeñas */
+    .form-control-lg {
+      font-size: 1rem;
+    }
+  
+    /* Ocultar imagen de fondo en pantallas pequeñas */
+    .fondo {
+      display: none;
+    }
+  }
+  
+  /* Estilos para pantallas medianas y grandes */
+  @media only screen and (min-width: 768px) {
+    /* Cambiar el tamaño del cohete en pantallas grandes */
+    .cohete {
+      width: 400px;
+      height: 400px;
+    }
+  
+    /* Cambiar el tamaño del texto en pantallas grandes */
+    .form-control-lg {
+      font-size: 1.5rem;
+    }
+  
+    /* Mostrar imagen de fondo en pantallas grandes */
+    .fondo {
+      display: block;
+    }
+  }
+  
+  /* Estilos para pantallas extra grandes */
+  @media only screen and (min-width: 1200px) {
+    /* Cambiar el tamaño del cohete en pantallas extra grandes */
+    .cohete {
+      width: 550px;
+      height: 550px;
+    }
+  
+    /* Cambiar el tamaño del texto en pantallas extra grandes */
+    .form-control-lg {
+      font-size: 2rem;
+    }
+  }
