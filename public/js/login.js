@@ -12,7 +12,6 @@
 // form.addEventListener('submit', enviarFormulario);
 
 const formulario = document.querySelector('#formulario');
-
 formulario.addEventListener('submit', (event) => {
   event.preventDefault(); // Evita que se envíe el formulario
 
@@ -21,4 +20,6 @@ formulario.addEventListener('submit', (event) => {
 
   // Realizar la lógica para enviar los datos del formulario al servidor
 });
+
+
 

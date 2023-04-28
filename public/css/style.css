@@ -398,3 +398,16 @@ img {
     bottom: 1270px;
     left: 15px;
 }
+#btnamigos{
+    position: relative;
+    left: 100px;
+    bottom: 5px;
+}
+.picreloj{
+    border: solid;
+    border-radius: 50%;
+    width: 70px;
+   position: relative;
+   left: 500px;
+   top:40px;
+}
