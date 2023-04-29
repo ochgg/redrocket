@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const path = require('path');
@@ -13,6 +13,23 @@ const db = mysql.createConnection({
   user: 'admin',
   password: '123456',
   database: 'redrocket'
+});*/
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+const port = 4000;
+
+
+// Configuración de la base de datos
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 db.connect(function(err) {
