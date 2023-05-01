@@ -1,7 +1,6 @@
 # Ignore package files
 node_modules
-package-lock.json
-package.json
+
 
 # Ignore VS Code Settings
 .vscode/
