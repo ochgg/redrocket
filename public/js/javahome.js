@@ -152,42 +152,77 @@ function darLike2() {
 
           const form = document.querySelector('#post-form');
           const container = document.querySelector('#post-container');
-  
-            form.addEventListener('submit', async (event) => {
-              event.preventDefault();
-              const title = document.querySelector('#post-title').value;
-              const content = document.querySelector('#post-content').value;
-            
-              try {
-                const response = await fetch('/api/publicar', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({ title, content })
-                });
-            
-                const data = await response.json();
-            
-                // Crear un nuevo div para la publicación
-                const newPost = document.createElement('div');
-                newPost.classList.add('post');
-            
-                // Agregar el título y el contenido de la publicación al nuevo div
-                const postTitle = document.createElement('h2');
-                postTitle.innerText = data.title;
-                newPost.appendChild(postTitle);
-            
-                const postContent = document.createElement('p');
-                postContent.innerText = data.content;
-                newPost.appendChild(postContent);
-            
-                // Agregar el nuevo div a la página
-                container.appendChild(newPost);
-            
-                document.querySelector('#post-content').value = '';
-                document.querySelector('#post-title').value = '';
-              } catch (error) {
-                console.error('Error:', error);
-              }
-            });
+          
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const title = document.querySelector('#post-title').value;
+            const content = document.querySelector('#post-content').value;
+          
+            try {
+              const response = await fetch('/api/publicar', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, content })
+              });
+          
+              const data = await response.json();
+          
+              // Crear un nuevo div para la publicación
+              const newPost = document.createElement('div');
+              newPost.classList.add('post');
+          
+              // Agregar el título y el contenido de la publicación al nuevo div
+              const postTitle = document.createElement('h2');
+              postTitle.innerText = data.title;
+              newPost.appendChild(postTitle);
+          
+              const postContent = document.createElement('p');
+              postContent.innerText = data.content;
+              newPost.appendChild(postContent);
+          
+              // Agregar el nuevo div a la página
+              container.appendChild(newPost);
+          
+              document.querySelector('#post-content').value = '';
+              document.querySelector('#post-title').value = '';
+          
+              // Obtener la lista de publicaciones existente del almacenamiento local (si hay alguna)
+              const existingPosts = JSON.parse(localStorage.getItem('posts')) || [];
+          
+              // Agregar la nueva publicación a la lista
+              existingPosts.push(data);
+          
+              // Guardar la lista actualizada en el almacenamiento local
+              localStorage.setItem('posts', JSON.stringify(existingPosts));
+            } catch (error) {
+              console.error('Error:', error);
+            }
+          });
+          
+          // Obtener la lista de publicaciones almacenadas del almacenamiento local
+          const storedPosts = JSON.parse(localStorage.getItem('posts'));
+          
+          // Si hay publicaciones almacenadas
+          if (storedPosts && storedPosts.length > 0) {
+            // Recorrer la lista de publicaciones
+            for (const post of storedPosts) {
+              // Crear un nuevo div para la publicación
+              const newPost = document.createElement('div');
+              newPost.classList.add('post');
+          
+              // Agregar el título y el contenido de la publicación al nuevo div
+              const postTitle = document.createElement('h2');
+              postTitle.innerText = post.title;
+              newPost.appendChild(postTitle);
+          
+              const postContent = document.createElement('p');
+              postContent.innerText = post.content;
+              newPost.appendChild(postContent);
+          
+              // Agregar el nuevo div al contenedor
+              container.appendChild(newPost);
+            }
+          }
+          
