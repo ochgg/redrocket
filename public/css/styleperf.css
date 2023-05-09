@@ -6,20 +6,17 @@ body{
 
 .container{
     background-color:  #D9E6E8;
-
+    
 }
 
-.saludo-1 {
-    display: flex;
-    max-height: 50px;
-    max-width: 100%;
-}
+
 
 
 .notificaciones {
     height: 30px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 5px;
+    padding-right: 10px;
     
 }
 
@@ -44,7 +41,7 @@ body{
     height: 300px;
     border-radius: 1000%;
 }
-.principal{
+.container-principal{
     margin-top: 50px;
 }
 .caja1{
@@ -94,15 +91,7 @@ body{
     
 }
 
-.chatbox {
-    background-color: #55868C;
-    float: right;
-    position: sticky;
-    bottom: 30px;
-    right: 130px;
-    border: solid black;
-    
-}
+
 .cajaamigos{
     
     background-color: white;
@@ -124,6 +113,9 @@ body{
 ul{
     list-style: none;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
     
 }
 
@@ -132,7 +124,9 @@ ul{
 .boton1boot {
     border-style: double;
     border-radius: 5px;
+    margin-bottom: 5px;
     position: relative;
+    left: 5px;
     top: 5px;
    
 }
@@ -142,10 +136,7 @@ ul{
 }
 .boton2 {
     border-style: double;
-    border-radius: 5px;
-    ;
-   
-    
+    border-radius: 5px; 
     
 }
 .boton3 {
@@ -405,4 +396,34 @@ button[type="submit"] {
     .saludo-1{
         display: none;
     }
+}
+
+#btnamigos {
+    margin-bottom: 10px;
+}
+
+.medio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 170px;
+    bottom: 355px;
+   
+}
+.left {
+   
+   position: relative;
+   bottom: 60px;
+   
+}
+#izquierda{
+
+margin-top: 170px;  
+  
+ 
+}
+.footer{
+    background-color:  #55868C;
+    text-align: center;
 }

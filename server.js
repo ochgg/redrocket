@@ -148,6 +148,36 @@ app.post('/api/login', (req, res) => {
     }
   });
 });
+//USUARIOS
+
+app.get('/api/usuarios', function(req, res) {
+  const sql = `SELECT * FROM registro_usuarios`;
+  db.query(sql, function(err, results) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error al obtener los datos de la base de datos');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.get('/api/usuarios/:id', function(req, res) {
+  const id = req.params.id;
+  const sql = `SELECT * FROM registro_usuarios WHERE id_usuario = ?`;
+  db.query(sql, [id], function(err, result) {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error al consultar la base de datos');
+    } else {
+      if (result.length > 0) {
+        res.json(result[0]);
+      } else {
+        res.status(404).send('Usuario no encontrado');
+      }
+    }
+  });
+});
 
 
 
