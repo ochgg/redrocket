@@ -1,23 +1,14 @@
-/*const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql2');
-const path = require('path');
-
-
-const app = express();
-const port = 4000;
-
-// Configuración de la base de datos
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'admin',
-  password: '123456',
-  database: 'redrocket'
-});*/
 const express = require('express');
+const session = require("express-session");
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
+// const mysql = require("mysql2-promise");
 const path = require('path');
+// const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
+const cors = require("cors");
+
 require('dotenv').config();
 
 const app = express();
@@ -77,6 +68,48 @@ app.get('/public/img/:imagen', function(req, res) {
   res.sendFile(path.join(__dirname, 'public', 'img', req.params.imagen));
 });
 
+/////////////////////////////////////////////REGISTRO///////////////////////////////////////////////
+app.post("/api/registrar", function (req, res) {
+  const nombre = req.body.nombre;
+  const email = req.body.email;
+  const passwordHash = bcrypt.hashSync(req.body.password, 10);
+  const ciudad = req.body.ciudad;
+  const pais = req.body.pais;
+  const edad = req.body.edad;
+  const estudios = req.body.estudios;
+  const idiomas = req.body.idiomas;
+  const linkedin = req.body.linkedin;
+  const hobbies = req.body.hobbies;
+
+  const sql = `INSERT INTO registro_usuarios (nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies) VALUES ('${nombre}', '${email}', '${passwordHash}', '${ciudad}', '${pais}', '${edad}', '${estudios}', '${idiomas}', '${linkedin}', '${hobbies}')`;
+
+  // db.query(sql, function (err, result) {
+  //   if (err) throw err;
+  //   res.redirect("/login.html");
+  // });
+
+  // Capturar error de correo existente
+  db.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      if (err.code === "ER_DUP_ENTRY") {
+        res.status(409).send("El usuario ya existe en la base de datos.");
+        console.log("El usuario ya existe en la base de datos.");
+      } else {
+        res.status(500).send("Error al guardar los datos en la base de datos");
+        console.log("Error al guardar los datos en la base de datos");
+      }
+    } 
+    // Eliminamos el bloque else que maneja la inserción de datos correctamente.
+    // else {
+    //   console.log("Datos guardados correctamente en la base de datos");
+    // }
+  });
+  // Descomentamos esta línea para redirigir al usuario a la página de inicio de sesión.
+  res.redirect("/login.html");
+});
+
+///////////////////////PUBLICAR//////////////
 app.post('/api/publicar', function(req, res) {
   const title = req.body.title;
   const content = req.body.content;
@@ -92,22 +125,7 @@ app.post('/api/publicar', function(req, res) {
   });
 });
 
-app.post('/api/registrar', function(req, res) {
-  const nombre = req.body.nombre;
-  const email = req.body.email;
-  const password = req.body.password;
-  const ciudad = req.body.ciudad;
-  const pais = req.body.pais;
-  const edad = req.body.edad;
-  const estudios = req.body.estudios;
-  const idiomas = req.body.idiomas;
-  const linkedin = req.body.linkedin;
-  const hobbies = req.body.hobbies;
-
-  const sql = `INSERT INTO registro_usuarios (nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies) VALUES ('${nombre}', '${email}', '${password}', '${ciudad}', '${pais}', '${edad}', '${estudios}', '${idiomas}', '${linkedin}', '${hobbies}')`;
-// });
-//////////////////////
-
+////////////////////////////////////LOGIN//////////////////////////////////////
 // manejar solicitudes POST a la ruta '/api/login'
 app.post('/api/login', (req, res) => {
   const email = req.body.email;
@@ -128,26 +146,8 @@ app.post('/api/login', (req, res) => {
   });
 });
 
-
-/////////////////////////
-
-  // Capturar error de correo existente
-  db.query(sql, function(err, result) {
-    if (err) {
-      console.log(err);
-      if (err.code === 'ER_DUP_ENTRY') {
-        res.status(409).send('El usuario ya existe en la base de datos.');
-        console.log('El usuario ya existe en la base de datos.');
-      } else {
-        res.status(500).send('Error al guardar los datos en la base de datos');
-        console.log('Error al guardar los datos en la base de datos');
-      }
-    } else {
-      console.log('Datos guardados correctamente en la base de datos');
-      res.json({ nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies });
-    }
-  });
-});
+ 
+// });
 //USUARIOS
 
 app.get('/api/usuarios', function(req, res) {
