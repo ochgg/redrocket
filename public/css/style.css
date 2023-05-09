@@ -413,3 +413,21 @@ img {
    left: 500px;
    top:40px;
 }
+.card-body{
+    background-color: white;
+}
+
+.post button {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .post button:hover {
+    background-color: #2980b9;
+  }
+  
