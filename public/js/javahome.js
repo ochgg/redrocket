@@ -1,13 +1,17 @@
-let numero2=0;
+let numero2 = 0;
 let contar2 = document.getElementById("caja3");
 let likeButton2 = document.getElementById("likeButton2");
 let rojo = document.getElementById("corazon");
 
-likeButton2.addEventListener("click", ()=>{numero2++;
-
+likeButton2.addEventListener("click", () => {
+  if (!likeButton2.disabled) {
+    numero2++;
     contar2.textContent = numero2;
     rojo.style.fill = "red";
-    });
+    likeButton2.disabled = true;
+  }
+});
+
 
 function darLike2() {
     return new Promise(function(resolve, reject) {
@@ -177,18 +181,22 @@ function displayPosts() {
 
     // Agregar un botón de likes
     const likeButton = document.createElement('button');
-    likeButton.innerText = 'Like';
-    newPost.appendChild(likeButton);
+likeButton.innerText = 'Like';
+newPost.appendChild(likeButton);
 
-    const likeCount = document.createElement('span');
-    likeCount.innerText = post.likes ? post.likes : 0;
-    newPost.appendChild(likeCount);
+const likeCount = document.createElement('span');
+likeCount.innerText = post.likes ? post.likes : 0;
+newPost.appendChild(likeCount);
 
-    likeButton.addEventListener('click', () => {
-      post.likes = post.likes ? post.likes + 1 : 1;
-      likeCount.innerText = post.likes;
-      savePosts();
-    });
+likeButton.addEventListener('click', () => {
+  if (!post.likes) {
+    post.likes = 1;
+    likeCount.innerText = post.likes;
+    likeButton.disabled = true;
+    savePosts();
+  }
+});
+
 
     // Agregar un botón de eliminar
 const deleteButton = document.createElement('button');

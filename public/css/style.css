@@ -431,3 +431,12 @@ img {
     background-color: #2980b9;
   }
   
+.right-wrapper {
+
+
+position: relative;
+left: 495px;
+bottom:335px
+
+}  
+
