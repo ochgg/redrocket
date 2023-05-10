@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2023 a las 17:21:32
+-- Tiempo de generación: 10-05-2023 a las 14:24:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -35,6 +35,18 @@ CREATE TABLE `amigos` (
   `ciudad` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `amigos`
+--
+
+INSERT INTO `amigos` (`id_amigos`, `id_usuario`, `nombre`, `email`, `ciudad`) VALUES
+(1, 2, 'Marcos Casas', 'casasmark@hotmail.com', 'Lugo'),
+(2, 1, 'Pedro Perez', 'pedroperez@gmail.com', 'Madrid'),
+(3, 3, 'Sergio Fernández', 'sergfer@hotmail.com', 'Valencia'),
+(4, 4, 'María Rodríguez', 'mariarod@gmail.com', 'León'),
+(5, 5, 'Álvaro Menéndez', 'menendezal@gmail.com', 'Santander'),
+(6, 6, 'Jorge Hernández', 'jorgeher@gmail.com', 'Avilés');
+
 -- --------------------------------------------------------
 
 --
@@ -53,7 +65,23 @@ CREATE TABLE `publicacion` (
 --
 
 INSERT INTO `publicacion` (`id_post`, `id_usuario`, `title`, `content`) VALUES
-(1, 1, 'zcxzxc', 'dczxcz');
+(1, 1, 'zcxzxc', 'dczxcz'),
+(2, 1, 'blablabla', 'entorno'),
+(3, 1, 'dfdf', 'tacatava'),
+(4, 1, 'jjj', 'jhjk'),
+(5, 1, 'sdfsd', 'fsdf'),
+(6, 1, 'jkdfjkdjf', 'kdjfkldsjfk'),
+(7, 1, 'dasdasd', 'adasd'),
+(8, 1, 'fdsfds', 'sdfdsfdsf'),
+(9, 1, 'sfsdf', 'sdff'),
+(10, 1, 'sdf', 'fdf'),
+(11, 1, 'df', 'dfsf'),
+(12, 1, '', 'sdf'),
+(13, 1, 'sdf', 'fsdf'),
+(14, 1, 'sf', 'dfsdf'),
+(15, 1, '', 'sfdsf'),
+(16, 1, 'hola', 'hola'),
+(17, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -85,7 +113,10 @@ INSERT INTO `registro_usuarios` (`id_usuario`, `nombre`, `email`, `password`, `c
 (3, 'Sergio Fernández', 'sergfer@hotmail.com', '12345', 'Valencia', 'España', 45, 'Técnico de Emergencias Sanitarias', 'Francés', 'dfafddfdf', 'Baloncesto'),
 (4, 'María Rodríguez', 'mariarod@gmail.com', '12345', 'León', 'España', 34, 'Desarrollo de Aplicaciones Multiplataforma', 'Español ', 'XXXXXX', 'Leer'),
 (5, 'Álvaro Menéndez', 'menendezal@gmail.com', '12345', 'Santander', 'España', 27, 'Grado en Historia', 'Francés', 'XXXXXX', 'Pasear'),
-(6, 'Jorge Hernández', 'jorgeher@gmail.com', '12345', 'Avilés', 'España', 32, 'Grado en Medicina', 'Inglés', 'XXXXXX', 'Dibujar');
+(6, 'Jorge Hernández', 'jorgeher@gmail.com', '12345', 'Avilés', 'España', 32, 'Grado en Medicina', 'Inglés', 'XXXXXX', 'Dibujar'),
+(98, 'José Hernández', 'andreaberros@gmail.com', '12345', 'Oviedo', 'España', 12, 'nada', 'español', 'blablabla', 'blablabla'),
+(103, 'andrea', 'bbbbbbbbb@gmail.com', '123456', 'Oviedo', 'España', 45, 'sda', 'dsad', 'sadas', 'adasda'),
+(104, 'Omar', 'omargannem@yahoo.es', '$2b$10$d1o4VgKjbzooN', 'Madrid', 'España', 55, 'Desarrollador Fullstack', 'Español', 'https://www.linkedin.com/in/pedroperz/', 'Senderismo, Vaijar');
 
 --
 -- Índices para tablas volcadas
@@ -120,19 +151,19 @@ ALTER TABLE `registro_usuarios`
 -- AUTO_INCREMENT de la tabla `amigos`
 --
 ALTER TABLE `amigos`
-  MODIFY `id_amigos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_amigos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `registro_usuarios`
 --
 ALTER TABLE `registro_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- Restricciones para tablas volcadas
