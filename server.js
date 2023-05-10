@@ -2,10 +2,8 @@ const express = require('express');
 const session = require("express-session");
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
-// const mysql = require("mysql2-promise");
 const path = require('path');
 const jwt = require("jsonwebtoken");
-// const bcrypt = require("bcryptjs");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 
@@ -118,11 +116,6 @@ app.post("/api/registrar", function (req, res) {
 
   const sql = `INSERT INTO registro_usuarios (nombre, email, password, ciudad, pais, edad, estudios, idiomas, linkedin, hobbies) VALUES ('${nombre}', '${email}', '${passwordHash}', '${ciudad}', '${pais}', '${edad}', '${estudios}', '${idiomas}', '${linkedin}', '${hobbies}')`;
 
-  // db.query(sql, function (err, result) {
-  //   if (err) throw err;
-  //   res.redirect("/login.html");
-  // });
-
   // Capturar error de correo existente
   db.query(sql, function (err, result) {
     if (err) {
@@ -135,12 +128,7 @@ app.post("/api/registrar", function (req, res) {
         console.log("Error al guardar los datos en la base de datos");
       }
     } 
-    // Eliminamos el bloque else que maneja la inserción de datos correctamente.
-    // else {
-    //   console.log("Datos guardados correctamente en la base de datos");
-    // }
   });
-  // Descomentamos esta línea para redirigir al usuario a la página de inicio de sesión.
   res.redirect("/login.html");
 });
 
@@ -185,6 +173,7 @@ app.post("/auth", (req, res) => {
   );
 });
 
+
 //////////////////VERIFICAR EL TOKEN////////////////////////
 function verificarToken(token, secretKey) {
   try {
@@ -202,57 +191,11 @@ app.get("/home", (req, res) => {
   const userId = verificarToken(token, process.env.SECRET_KEY);
 
   if (userId) {
-    // El token es válido, aquí podrías realizar las acciones correspondientes
-    // para devolver la información del usuario, como por ejemplo consultar
-    // la base de datos con el id del usuario
     res.send(`Bienvenido usuario ${userId}`);
   } else {
-    // El token es inválido, devuelve un error 401 Unauthorized
     res.status(401).send({ error: "Token inválido" });
   }
 });
-
-
-// app.post("/auth", (req, res) => {
-//   const { email, password } = req.body;
-//   db.query(
-//     `SELECT * FROM registro_usuarios WHERE  email = ? AND password = ?`,
-//     [email, password],
-//     (error, results) => {
-//       if (error) {
-//         console.error(error);
-//         res.status(500).send({ error: "Error del servidor" });
-//         return;
-//       }
-//       if (results.length === 0) {
-//         res.status(400).send({ error: "Usuario o contraseña incorrectos" });
-//         return;
-//       }
-//       const id = results[0].id_usuario;
-//       res.status(200).send({ id });
-//     }
-//   );
-// });
-
-// manejar solicitudes POST a la ruta '/api/login'
-// app.post('/api/login', (req, res) => {
-//   const email = req.body.email;
-//   const password = req.body.password;
-
-// //   // consultar la tabla de registro_usuarios en la base de datos
-//   db.query('SELECT * FROM registro_usuarios WHERE email = ? AND password = ?', [email, password], (err, results) => {
-//     if (err) {
-//       console.error('Error al consultar la base de datos:', err);
-//       res.sendStatus(500);
-//     } else {
-//       if (results.length > 0) {
-//         res.send({ message: 'Inicio de sesión exitoso' });
-//       } else {
-//         res.send({ message: 'Nombre de usuario o contraseña incorrectos' });
-//       }
-//     }
-//   });
-// });
 
 //USUARIOS
 
@@ -284,8 +227,6 @@ app.get('/api/usuarios/:id', function(req, res) {
     }
   });
 });
-
-
 
 // Inicio del servidor
 app.listen(port, function() {

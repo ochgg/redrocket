@@ -17,7 +17,6 @@ function darLike2() {
     return new Promise(function(resolve, reject) {
 
       setTimeout(function() {
-       
         resolve("Función ejecutada correctamente");
       }, 2000);
     });
@@ -31,102 +30,6 @@ function darLike2() {
     })
     
   });
-  function obtenerUsuarioRandom() {
-    /* Obtiene un usuario aleatorio de la API de Randomuser. */
-    return fetch('https://randomuser.me/api/')
-      .then(response => response.json())
-      .then(data => data.results[0])
-      .catch(error => {
-        console.log("Error al obtener el usuario aleatorio:");
-      });
-  }
-  
-  function mostrarUsuarioEnRedSocial(usuario) {
-    /* Muestra la información del usuario en la sección de usuario de una red social ficticia. */
-    if (usuario) {
-      const nombre = `${usuario.name.title} ${usuario.name.first} ${usuario.name.last}`;
-      console.log("Nombre:", nombre);
-      console.log("Género:", usuario.gender);
-      console.log("Fecha de nacimiento:", usuario.dob.date);
-      console.log("País:", usuario.location.country);
-      console.log("Email:", usuario.email);
-      console.log("Teléfono:", usuario.phone);
-      console.log("Foto de perfil:", usuario.picture.large);
-    } else {
-      console.log("No se ha obtenido información del usuario.");
-    }
-  }
-  
-  // Obtener un usuario aleatorio
-  obtenerUsuarioRandom()
-    .then(usuarioRandom => {
-      // Mostrar el usuario en la sección de usuario de la red social
-      console.log("Información del usuario en la red social:");
-      mostrarUsuarioEnRedSocial(usuarioRandom);
-    });
-
-    function obtenerUsuarioRandom() {
-        /* Obtiene un usuario aleatorio de la API de Randomuser. */
-        return fetch('https://randomuser.me/api/')
-          .then(response => response.json())
-          .then(data => data.results[0])
-          .catch(error => {
-            console.error("Error al obtener el usuario aleatorio:", error);
-            return null;
-          });
-      }
-  
-      function mostrarUsuarioEnHTML(usuario) {
-        /* Muestra la información del usuario en el DOM del HTML. Hago una variable con la información que me da la API y le pido que la ponga en párrafos en mi DIV */
-        const usuarioInfoDiv = document.getElementById('usuarioInfo');
-        if (usuario) {
-          const nombre = `${usuario.name.title} ${usuario.name.first} ${usuario.name.last}`;
-          const genero = usuario.gender;
-          const fechaNacimiento = usuario.dob.date;  //no vale poner cualquier cosa, hay palabras que marca la página para cada dato
-          const pais = usuario.location.country;
-          const email = usuario.email;
-          const telefono = usuario.phone;
-          const fotoPerfil = usuario.picture.large;
-  
-          // Actualiza el contenido del div con la información del usuario innerHTML me permite mostrar el contenido obtenido en mi DIV
-          usuarioInfoDiv.innerHTML = `
-            <p><strong>Nombre:</strong> ${nombre}</p>
-            <p><strong>Género:</strong> ${genero}</p>
-            <p><strong>Fecha de nacimiento:</strong> ${fechaNacimiento}</p>
-            <p><strong>País:</strong> ${pais}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Teléfono:</strong> ${telefono}</p>
-            <p><strong>Foto de perfil:</strong> <img src="${fotoPerfil}" alt="Foto de perfil"></p>
-          `;
-        } else {
-          usuarioInfoDiv.innerHTML = '<p>No se ha obtenido información del usuario.</p>'; //si hay error le pido que me muestre esto en mi DIV
-        }
-      }
-  
-      // Obtener un usuario aleatorio
-      obtenerUsuarioRandom()
-        .then(usuarioRandom => {
-          // Mostrar el usuario en el DOM del HTML
-          mostrarUsuarioEnHTML(usuarioRandom);
-        });
-
-        document.getElementById('btnGenerarUsuario').addEventListener('click', () => {
-            obtenerUsuarioRandom()
-              .then(usuarioRandom => {
-                mostrarUsuarioEnHTML(usuarioRandom);
-              });
-          }); 
-
-          function mostrarFecha() {
-            var now = moment(new Date());
-            console.log(now);
-    
-            var utc = moment(new Date()).utc();
-            console.log(utc.format('DD MM YYYY hh:mm:ss'));
-            
-            document.getElementById("fecha").innerHTML = utc.format('DD MM YYYY hh:mm:ss');
-          }
-
           function actualizarReloj() {
             var fecha = new Date();
             var horas = fecha.getHours();
@@ -196,8 +99,6 @@ likeButton.addEventListener('click', () => {
     savePosts();
   }
 });
-
-
     // Agregar un botón de eliminar
 const deleteButton = document.createElement('button');
 deleteButton.innerText = 'Eliminar';
@@ -219,8 +120,6 @@ deleteButton.addEventListener('click', () => {
     displayPosts();
   }
 });
-
-
 
     // Agregar el nuevo div al contenedor
     container.appendChild(newPost);
@@ -280,4 +179,3 @@ form.addEventListener('submit', async (event) => {
     console.error('Error:', error);
   }
 });
-
