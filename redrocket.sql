@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2023 a las 13:38:01
+-- Tiempo de generación: 10-05-2023 a las 14:24:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -115,7 +115,8 @@ INSERT INTO `registro_usuarios` (`id_usuario`, `nombre`, `email`, `password`, `c
 (5, 'Álvaro Menéndez', 'menendezal@gmail.com', '12345', 'Santander', 'España', 27, 'Grado en Historia', 'Francés', 'XXXXXX', 'Pasear'),
 (6, 'Jorge Hernández', 'jorgeher@gmail.com', '12345', 'Avilés', 'España', 32, 'Grado en Medicina', 'Inglés', 'XXXXXX', 'Dibujar'),
 (98, 'José Hernández', 'andreaberros@gmail.com', '12345', 'Oviedo', 'España', 12, 'nada', 'español', 'blablabla', 'blablabla'),
-(103, 'andrea', 'bbbbbbbbb@gmail.com', '123456', 'Oviedo', 'España', 45, 'sda', 'dsad', 'sadas', 'adasda');
+(103, 'andrea', 'bbbbbbbbb@gmail.com', '123456', 'Oviedo', 'España', 45, 'sda', 'dsad', 'sadas', 'adasda'),
+(104, 'Omar', 'omargannem@yahoo.es', '$2b$10$d1o4VgKjbzooN', 'Madrid', 'España', 55, 'Desarrollador Fullstack', 'Español', 'https://www.linkedin.com/in/pedroperz/', 'Senderismo, Vaijar');
 
 --
 -- Índices para tablas volcadas
@@ -162,7 +163,7 @@ ALTER TABLE `publicacion`
 -- AUTO_INCREMENT de la tabla `registro_usuarios`
 --
 ALTER TABLE `registro_usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- Restricciones para tablas volcadas
